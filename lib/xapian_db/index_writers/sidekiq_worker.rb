@@ -11,6 +11,9 @@ module XapianDb
       APPROVED_TASKS = [:index, :delete_doc, :reindex_class]
 
       def perform(task, options)
+        task = task.to_s
+        puts "the task is #{task} **"
+        puts "the options is #{options} **"
         self.class.send(task, options) if APPROVED_TASKS.include?(task.to_sym)
       end
 
